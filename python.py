@@ -1,3 +1,7 @@
+# Code for Smart Virtual Assistant 
+
+
+
 import pyttsx3 #pip install pyttsx3
 import speech_recognition as sr #pip install speechRecognition
 import datetime
@@ -54,8 +58,8 @@ def sendEmail(to, content):
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.ehlo()
     server.starttls()
-    server.login('youremail@gmail.com', 'your-password')
-    server.sendmail('youremail@gmail.com', to, content)
+    server.login('youremail@gmail.com', 'your-password') # Update Email Credentials
+    server.sendmail('youremail@gmail.com', to, content)  # Update Email Credentials
     server.close()
 
 if _name_ == "_main_":
@@ -82,6 +86,8 @@ if _name_ == "_main_":
         elif 'open stackoverflow' in query:
             webbrowser.open("stackoverflow.com")   
 
+    # Update Music Directory: If you intend to use the music playback functionality (play music), ensure that you update 
+    # the music_dir variable with the path to your music directory. '''
 
         elif 'play music' in query:
             music_dir = 'D:\\Non Critical\\songs\\Favorite Songs2'
@@ -93,17 +99,18 @@ if _name_ == "_main_":
             strTime = datetime.datetime.now().strftime("%H:%M:%S")    
             speak(f"Sir, the time is {strTime}")
 
+    # Update Code Editor Path: If you want to open a code editor (open code), update the codePath variable with the path to your code editor executable.
         elif 'open code' in query:
-            codePath = "C:\\Users\\Haris\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+            codePath = "C:\\Users\\Test\\AppData\\Local\\Programs\\Code.exe"
             os.startfile(codePath)
 
-        elif 'email to harry' in query:
+        elif 'email to your name ' in query:
             try:
                 speak("What should I say?")
                 content = takeCommand()
-                to = "harryyourEmail@gmail.com"    
+                to = "youremail@gmail.com"    
                 sendEmail(to, content)
                 speak("Email has been sent!")
             except Exception as e:
                 print(e)
-                speak("Sorry my friend harry bhai. I am not able to send this email")
+                speak("Sorry. I am not able to send this email")
